@@ -5,6 +5,7 @@
     },
     "application_user" : {
       "container_roles":["User_Role"]
+      
     }
   }
 }
