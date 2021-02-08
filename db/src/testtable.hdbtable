@@ -1,0 +1,6 @@
+COLUMN TABLE "Trial_Project_1.db::testtable" ( 
+   "ID" INTEGER, 
+   "NAME" NVARCHAR(256),
+   "ACTIVE" TINYINT,
+   "COUNTRY" NVARCHAR(256),
+   PRIMARY KEY ("ID") )

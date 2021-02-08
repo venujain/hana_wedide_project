@@ -1,0 +1,14 @@
+{
+  "Trial_Project_1.db::CUSTOMERS": {
+    "target": {
+      "object": "CUSTOMERS",
+      "schema": "TRIAL2_HDI_DB_1"
+    }
+  },
+  "Trial_Project_1.db::SBOOK": {
+    "target": {
+      "object": "SBOOK",
+      "schema": "SFLIGHT"
+    }
+  }
+}

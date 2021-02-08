@@ -1,0 +1,10 @@
+{
+  "Trial2-hdidb-S0021777309-workspaceXWGBrekQpwmlRimN": {
+    "object_owner" : {
+      "container_roles":[ "User_Role"]
+    },
+    "application_user" : {
+      "container_roles":["User_Role"]
+    }
+  }
+}

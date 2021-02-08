@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="Trial_Project_1.db::TestCalculationView" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="TestCalculationView"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="Trial_Project_1.db::testtable">
+    <resourceUri>Trial_Project_1.db::testtable</resourceUri>
+  </DataSource>
+  <DataSource id="Join_2$$$$Trial_Project_1.db::testtable$$">
+    <resourceUri>Trial_Project_1.db::testtable</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="ACTIVE"/>
+      <viewAttribute id="COUNTRY"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_NAME" datatype="NVARCHAR" length="13" expressionLanguage="SQL">
+        <formula>CONCAT(&quot;ID&quot;, &quot;NAME&quot;)</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="Trial_Project_1.db::testtable"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_2" cardinality="CN_N" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="ID" aggregationType="sum"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="ACTIVE" aggregationType="sum"/>
+      <viewAttribute id="COUNTRY"/>
+      <viewAttribute id="CC_NAME"/>
+      <viewAttribute id="NAME_1"/>
+      <viewAttribute id="ACTIVE_1" aggregationType="sum"/>
+      <viewAttribute id="COUNTRY_1"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACTIVE" source="ACTIVE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="CC_NAME" source="CC_NAME"/>
+    </input>
+    <input node="Join_2$$$$Trial_Project_1.db::testtable$$">
+      <mapping xsi:type="Calculation:AttributeMapping" target="NAME_1" source="NAME"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ACTIVE_1" source="ACTIVE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="COUNTRY_1" source="COUNTRY"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+    </input>
+    <joinAttribute name="ID"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_2">
+  <attributes>
+    <attribute id="ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="Join_2" columnName="ID"/>
+    </attribute>
+    <attribute id="NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="NAME"/>
+      <keyMapping columnObjectName="Join_2" columnName="NAME"/>
+    </attribute>
+    <attribute id="COUNTRY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY"/>
+      <keyMapping columnObjectName="Join_2" columnName="COUNTRY"/>
+    </attribute>
+    <attribute id="CC_NAME" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CC_NAME"/>
+      <keyMapping columnObjectName="Join_2" columnName="CC_NAME"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="ACTIVE" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="ACTIVE"/>
+      <measureMapping columnObjectName="Join_2" columnName="ACTIVE"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="337"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="Trial_Project_1.db::testtable" modelObjectNameSpace="Join_2" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="224"/>
+    </shape></shapes>
+</layout>
+</Calculation:scenario>
